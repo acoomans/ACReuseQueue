@@ -5,12 +5,25 @@ A queue to keep and reusing objects.
 A reuse queue is a way to quickly reuse objects when object allocation and initialization is time-consuming.
 This reuse queue is inspired after UITableView's for reusing cells, headers and footers.
 
+[![Build Status](https://api.travis-ci.org/acoomans/ACReuseQueue.png)](https://api.travis-ci.org/acoomans/ACReuseQueue.png)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/ACReuseQueue/badge.png)](http://beta.cocoapods.org/?q=on%3Aios%20name%3AACReuseQueue%2A)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/p/ACReuseQueue/badge.png)](http://beta.cocoapods.org/?q=on%3Aios%20name%3AACReuseQueue%2A)
+
+
+## Install 
+
+You can either clone this repository and add the files in the _ACReuseQueue_ directory to your project; or use [CocoaPods](http://cocoapods.org).
+
+Add a pod entry to your Podfile:
+
+    pod 'ACReuseQueue', '~> 0.0.1'
+
+Install the pod(s) by running:
+
+    pod install
+
+
 ## Usage
-
-In your iOS project:
-
-1. Add the _ACReuseQueue_ directory or static library into your project.
-2. Add `#import "ACReuseQueue.h"`
 
 ### Reuse queue
 
@@ -49,7 +62,10 @@ or
                                               bundle:nil
                             forObjectReuseIdentifier:@"button"];
 
-	
+## Documentation
+
+If you have [appledoc](http://gentlebytes.com/appledoc/) installed, you can generate the documentation by running the corresponding target.
+
 ## Demo
 
 The _ACReuseQueueDemo_ target contains an example application to compare the performance with and without the reuse queue. You should preferably run the app on an actual device.
