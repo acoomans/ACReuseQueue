@@ -12,15 +12,19 @@ This reuse queue is inspired after UITableView's for reusing cells, headers and 
 
 ## Install 
 
-You can either clone this repository and add the files in the _ACReuseQueue_ directory to your project; or use [CocoaPods](http://cocoapods.org).
+You can either clone this repository and add the files in the `ACReuseQueue` directory to your project; or use [CocoaPods](http://cocoapods.org).
 
 Add a pod entry to your Podfile:
 
-    pod 'ACReuseQueue', '~> 0.0.1'
+```ruby
+pod 'ACReuseQueue', '~> 0.0.1'
+```
 
 Install the pod(s) by running:
 
-    pod install
+```ruby
+pod install
+```
 
 
 ## Usage
@@ -29,38 +33,50 @@ Install the pod(s) by running:
 
 You can then use the default queue with:
 
-	ACReuseQueue *myQueue = [ACReuseQueue defaultQueue];
+```objc
+ACReuseQueue *myQueue = [ACReuseQueue defaultQueue];
+```
 	
 or allocate and initialize your own queue.
 
-To reuse an object, call _dequeueReusableObjectWithIdentifier:_
+To reuse an object, call `dequeueReusableObjectWithIdentifier:`
 
-	[myQueue dequeueReusableObjectWithIdentifier:@"myIdentifier"];
+```objc
+[myQueue dequeueReusableObjectWithIdentifier:@"myIdentifier"];
+```
 	
-When you are done using an object, return it to the queue with _enqueueReusableObject:_
+When you are done using an object, return it to the queue with `enqueueReusableObject:`
 
-	[myQueue enqueueReusableObject:myObject];
+```objc
+[myQueue enqueueReusableObject:myObject];
+```
 
 ### Reusable object
 
-To be reused, an object must conform to the _ACReusableObject_ and must implement the _reuseIdentifier_
+To be reused, an object must conform to the `ACReusableObject` and must implement the `reuseIdentifier`
 
-	@property (nonatomic, copy) NSString *reuseIdentifier;
+```objc
+@property (nonatomic, copy) NSString *reuseIdentifier;
+```
 
-If an object may implement the _prepareForReuse_ method, it will be called before the object is returned by __dequeueReusableObjectWithIdentifier:_
+If an object may implement the `prepareForReuse` method, it will be called before the object is returned by `dequeueReusableObjectWithIdentifier:`
 
 
 ### Registering a class or a nib
 
-You can register a class or a nib for a given identifier with _registerClass:forObjectReuseIdentifier:_ or _registerNib:forObjectReuseIdentifier:_. It will automatically create an object for you if no object is available when dequeueing:
+You can register a class or a nib for a given identifier with `registerClass:forObjectReuseIdentifier:` or `registerNib:forObjectReuseIdentifier:`. It will automatically create an object for you if no object is available when dequeueing:
 
-	[[ACReuseQueue defaultQueue] registerClass:ACButton.class forObjectReuseIdentifier:@"button"];
+```objc
+[[ACReuseQueue defaultQueue] registerClass:ACButton.class forObjectReuseIdentifier:@"button"];
+```
 
 or
 
-	[[ACReuseQueue defaultQueue] registerNibWithName:NSStringFromClass(ACButton.class)
-                                              bundle:nil
-                            forObjectReuseIdentifier:@"button"];
+```objc
+[[ACReuseQueue defaultQueue] registerNibWithName:NSStringFromClass(ACButton.class)
+                                          bundle:nil
+                        forObjectReuseIdentifier:@"button"];
+```
 
 ## Documentation
 
@@ -68,7 +84,7 @@ If you have [appledoc](http://gentlebytes.com/appledoc/) installed, you can gene
 
 ## Demo
 
-The _ACReuseQueueDemo_ target contains an example application to compare the performance with and without the reuse queue. You should preferably run the app on an actual device.
+The `ACReuseQueueDemo` target contains an example application to compare the performance with and without the reuse queue. You should preferably run the app on an actual device.
 
 The demo app has a page view controller, where each page contains about 200 buttons (I know the example is a little bit contrived but it serves to expose the performance difference). Swipe both fast and slowly to appreciate the difference.
 
